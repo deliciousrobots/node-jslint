@@ -50,6 +50,8 @@ if (!parsed.argv.remain.length) {
     die("No files specified.");
 }
 
+var errors = false;
+
 function lintFile(file) {
     fs.readFile(file, function (err, data) {
         if (err) {
@@ -62,8 +64,19 @@ function lintFile(file) {
         } else {
             reporter.report(file, lint);
         }
+        if(lint.errors.length > 0) {
+            errors = true;
+        }
     });
-    // TODO process.exit with correct return value
 }
 
 parsed.argv.remain.forEach(lintFile);
+
+var on_exit = false;
+
+process.on('exit', function () {
+    if(errors && !on_exit) {
+        on_exit = true;
+        process.exit(1);
+    }
+});
