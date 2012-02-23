@@ -11,7 +11,8 @@ function commandOptions () {
         'debug', 'devel', 'es5', 'evil', 'forin', 'fragment',
         'newcap', 'node', 'nomen', 'on', 'onevar', 'passfail',
         'plusplus', 'regexp', 'rhino', 'undef', 'safe', 'windows',
-        'strict', 'sub', 'white', 'widget', 'goodparts', 'json'
+        'strict', 'sub', 'white', 'widget', 'goodparts', 'json',
+        'plainoutput'
     ];
 
     var commandOpts = {
